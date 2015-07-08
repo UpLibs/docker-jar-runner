@@ -1,0 +1,23 @@
+{
+  "AWSEBDockerrunVersion": "1",
+  "Image": {
+    "Name": "uppoints/docker-nexus-jar-runner",
+    "Update": "true"
+  },
+  "Authentication": {
+    "Bucket": "uppoints-configs",
+    "Key": "dockercfg"
+  },
+  "Ports": [
+    {
+      "ContainerPort": "8080"
+    }
+  ],
+  "Volumes": [
+    {
+      "HostDirectory": "/var/app/current",
+      "ContainerDirectory": "/app"
+    }
+  ],
+  "Logging": "/var/log"
+}
