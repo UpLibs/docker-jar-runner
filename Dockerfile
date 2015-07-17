@@ -1,4 +1,4 @@
-FROM java:8
+FROM java:7
 
 ENV DEBIAN_FRONTEND noninteractive
 
@@ -9,7 +9,7 @@ COPY app/* /app/
 
 RUN chmod 775 /app
 RUN chmod +x /app/*
-RUN apt-get update  && apt-get install -y wget
+RUN apt-get update && apt-get install -y wget && apt-get install -y unzip
 
 EXPOSE 8080
 
