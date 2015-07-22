@@ -4,10 +4,6 @@
     "Name": "uppoints/docker-nexus-jar-runner",
     "Update": "true"
   },
-  "Authentication": {
-    "Bucket": "uppoints-configs",
-    "Key": "dockercfg"
-  },
   "Ports": [
     {
       "ContainerPort": "8080"
