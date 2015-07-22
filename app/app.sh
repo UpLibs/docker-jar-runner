@@ -12,9 +12,9 @@ else
 fi
 
 if $IS_ZIP ; then
-  wget --user=$NEXUS_USER --password=$NEXUS_PASSWORD ${NEXUS_URL}/service/local/artifact/maven/content?r=${NEXUS_REPOSITORY}"&g"=${NEXUS_GROUP}"&a"=${NEXUS_ARTIFACT}"&v"=${NEXUS_VERSION}"&e"=${FILE_EXTENSION} -O app.zip
+  wget --user=$NEXUS_USER --password=$NEXUS_PASSWORD ${NEXUS_URL}/service/local/artifact/maven/content?r=${NEXUS_REPOSITORY}"&g"=${NEXUS_GROUP}"&a"=${NEXUS_ARTIFACT}"&v"=${NEXUS_ARTIFACT_VERSION}"&e"=${FILE_EXTENSION} -O app.zip
 else
-  wget --user=$NEXUS_USER --password=$NEXUS_PASSWORD ${NEXUS_URL}/service/local/artifact/maven/content?r=${NEXUS_REPOSITORY}"&g"=${NEXUS_GROUP}"&a"=${NEXUS_ARTIFACT}"&v"=${NEXUS_VERSION} -O app.jar
+  wget --user=$NEXUS_USER --password=$NEXUS_PASSWORD ${NEXUS_URL}/service/local/artifact/maven/content?r=${NEXUS_REPOSITORY}"&g"=${NEXUS_GROUP}"&a"=${NEXUS_ARTIFACT}"&v"=${NEXUS_ARTIFACT_VERSION} -O app.jar
 fi
 
 if $IS_ZIP ; then
