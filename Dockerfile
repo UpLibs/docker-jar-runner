@@ -8,7 +8,7 @@ VOLUME /app
 COPY app/* /app/
 
 RUN chmod 775 /app
-RUN chmod +x /app/*
+RUN chmod a+x /app/.
 RUN apt-get update && apt-get install -y wget && apt-get install -y unzip
 
 EXPOSE 8080
