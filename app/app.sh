@@ -5,23 +5,23 @@ cd /app
 #JAR example
 IS_ZIP=false
 
-if [ "$FILE_EXTENSION" = "zip" ]; then
+if [ "$ARTIFACT_EXTENSION" = "zip" ]; then
     IS_ZIP=true
 else
     IS_ZIP=false
 fi
 
 if $IS_ZIP ; then
-  wget --user=$NEXUS_USER --password=$NEXUS_PASSWORD ${NEXUS_URL}/service/local/artifact/maven/content?r=${NEXUS_REPOSITORY}"&g"=${NEXUS_GROUP}"&a"=${NEXUS_ARTIFACT}"&v"=${NEXUS_ARTIFACT_VERSION}"&e"=${FILE_EXTENSION} -O app.zip
+  wget --user=$NEXUS_USER --password=$NEXUS_PASSWORD ${NEXUS_URL}/service/local/artifact/maven/content?r=${NEXUS_REPOSITORY}"&g"=${ARTIFACT_GROUP}"&a"=${ARTIFACT_NAME}"&v"=${ARTIFACT_VERSION}"&e"=${ARTIFACT_EXTENSION} -O app.zip
 else
-  wget --user=$NEXUS_USER --password=$NEXUS_PASSWORD ${NEXUS_URL}/service/local/artifact/maven/content?r=${NEXUS_REPOSITORY}"&g"=${NEXUS_GROUP}"&a"=${NEXUS_ARTIFACT}"&v"=${NEXUS_ARTIFACT_VERSION} -O app.jar
+  wget --user=$NEXUS_USER --password=$NEXUS_PASSWORD ${NEXUS_URL}/service/local/artifact/maven/content?r=${NEXUS_REPOSITORY}"&g"=${ARTIFACT_GROUP}"&a"=${ARTIFACT_NAME}"&v"=${ARTIFACT_VERSION} -O app.jar
 fi
 
 if $IS_ZIP ; then
   unzip app.*
   cd upp*
   cd bin
-  ./${NEXUS_ARTIFACT}
+  ./${ARTIFACT_NAME}
 else
   java -jar ${JAVA_OPTIONS} app.jar ${ARGS}
 fi
