@@ -1,4 +1,4 @@
-This docker image downloads a maven distribution from a Nexus repository manager and runs it.
+This docker image downloads a maven distribution or a jar from a Nexus repository manager and runs it.
 
 # Necessary environment properties
 - $NEXUS_URL = The url of the Nexus repository manager
