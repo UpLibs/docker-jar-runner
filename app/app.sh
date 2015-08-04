@@ -5,7 +5,7 @@ cd /app
 #JAR example
 IS_ZIP=false
 
-if [ "ARTIFACT_EXTENSION" = "zip" ]; then
+if [ "$ARTIFACT_EXTENSION" = "zip" ]; then
     IS_ZIP=true
 else
     IS_ZIP=false
