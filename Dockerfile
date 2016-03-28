@@ -1,4 +1,4 @@
-FROM java:8
+FROM develar/java:8u45
 
 ENV DEBIAN_FRONTEND noninteractive
 
@@ -8,7 +8,7 @@ COPY app/* /tmp/
 
 RUN chmod 775 /tmp
 RUN chmod a+x /tmp/app.sh
-RUN apt-get update && apt-get install -y wget && apt-get install -y unzip
+RUN apk update && apk add bash && apk add wget
 
 EXPOSE 8080
 
