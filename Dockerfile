@@ -1,4 +1,4 @@
-FROM develar/java:8u45
+FROM frolvlad/alpine-oraclejdk8:slim
 
 ENV DEBIAN_FRONTEND noninteractive
 
