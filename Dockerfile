@@ -8,7 +8,7 @@ COPY app/* /tmp/
 
 RUN chmod 775 /tmp
 RUN chmod a+x /tmp/app.sh
-RUN apk update && apk add bash && apk add wget && apk add curl && apk add openssl
+RUN apk update && apk add bash && apk add wget && apk add curl && apk add openssl && apk add xxd
 
 EXPOSE 8080
 
