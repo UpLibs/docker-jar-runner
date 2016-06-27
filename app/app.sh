@@ -39,7 +39,7 @@ downloadBlob () {
 
 ###############################################################
 
-cd app/
+cd /app
 
 IS_ZIP=false
 
@@ -61,9 +61,9 @@ if $IS_ZIP ; then
    unzip app.*
    cd upp*
    cd bin
-   ./${ARTIFACT_NAME}
+   ./${ARTIFACT_NAME} ${ARGS}
 else
-   java ${JAVA_OPTIONS} -jar app.jar ${ARGS}
+   java ${JAVA_OPTIONS} -jarapp.jar ${ARGS}
 fi
 
 exit
