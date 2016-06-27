@@ -63,7 +63,7 @@ if $IS_ZIP ; then
    cd bin
    ./${ARTIFACT_NAME}
 else
-   java -jar ${JAVA_OPTIONS} app.jar ${ARGS}
+   java ${JAVA_OPTIONS} -jar app.jar ${ARGS}
 fi
 
 exit
