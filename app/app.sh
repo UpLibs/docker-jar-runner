@@ -23,10 +23,10 @@ downloadBlob () {
    string_to_sign="${request_method}\n\n\n\n\n\n\n\n\n\n\n\n${canonicalized_headers}\n${canonicalized_resource}/${path}"
 
    # Decode the Base64 encoded access key, convert to Hex.
-   decoded_hex_key="$(echo -n $access_key | base64 -d -w0 | xxd -p -c256)"
+   decoded_hex_key="$(echo -n $access_key | base64 -d | xxd -p -c256)"
 
    # Create the HMAC signature for the Authorization header
-   signature=$(printf "$string_to_sign" | openssl dgst -sha256 -mac HMAC -macopt "hexkey:$decoded_hex_key" -binary |  base64 -w0)
+   signature=$(printf "$string_to_sign" | openssl dgst -sha256 -mac HMAC -macopt "hexkey:$decoded_hex_key" -binary |  base64 )
    authorization_header="Authorization: $authorization $storage_account:$signature"
 
    curl \
@@ -39,7 +39,7 @@ downloadBlob () {
 
 ###############################################################
 
-cd /app
+cd /tmp
 
 IS_ZIP=false
 
@@ -63,7 +63,7 @@ if $IS_ZIP ; then
    cd bin
    ./${ARTIFACT_NAME} ${ARGS}
 else
-   java ${JAVA_OPTIONS} -jarapp.jar ${ARGS}
+   java ${JAVA_OPTIONS} -jar app.jar ${ARGS}
 fi
 
 exit
