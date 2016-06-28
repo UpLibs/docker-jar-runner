@@ -28,10 +28,10 @@ Provided some environment properties, it is capable of downloading a distributio
 
 - For artifacts stored on Nexus:
 ```
-docker run -e STORAGE=nexus -e ACCOUNT=username -e PASSWORD=userpassword -e NEXUS_URL=http://nexus.domain.com -e REPOSITORY=releases -e ARTIFACT_GROUP=com.domain -e ARTIFACT_NAME=your-artifact-name -e ARTIFACT_VERSION=the-desired-version -e FILE_EXTENSION=zip -e YOUR_PROPERTY=props-value uppoints/docker-jar-runner
+docker run -p 8080:8080 -e STORAGE=nexus -e ACCOUNT=username -e PASSWORD=userpassword -e NEXUS_URL=http://nexus.domain.com -e REPOSITORY=releases -e ARTIFACT_GROUP=com.domain -e ARTIFACT_NAME=your-artifact-name -e ARTIFACT_VERSION=the-desired-version -e ARTIFACT_EXTENSION=zip -e YOUR_PROPERTY=props-value uppoints/docker-jar-runner
 ```
 
 - For artifacts stored on Azure:
 ```
-docker run -e STORAGE=azure -e ACCOUNT=accountname -e PASSWORD=accountkey -e REPOSITORY=container-name -e ARTIFACT_NAME=your-artifact-name -e ARTIFACT_VERSION=the-desired-version -e FILE_EXTENSION=zip -e YOUR_PROPERTY=props-value uppoints/docker-jar-runner
+docker run -p 8080:8080 -e STORAGE=azure -e ACCOUNT=accountname -e PASSWORD=accountkey -e REPOSITORY=container-name -e ARTIFACT_NAME=your-artifact-name -e ARTIFACT_VERSION=the-desired-version -e ARTIFACT_EXTENSION=zip -e YOUR_PROPERTY=props-value uppoints/docker-jar-runner
 ```
