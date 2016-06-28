@@ -39,7 +39,7 @@ downloadBlob () {
 
 ###############################################################
 
-cd /tmp
+cd /app
 
 IS_ZIP=false
 
@@ -58,7 +58,7 @@ else
 fi	
 
 if $IS_ZIP ; then
-   unzip app.*
+   unzip app.zip
    cd upp*
    cd bin
    ./${ARTIFACT_NAME} ${ARGS}
