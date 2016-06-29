@@ -2,7 +2,7 @@
 
 downloadBlob () {
    storage_account=$STORAGE_ACCOUNT
-   container_name=$REPOSITORY
+   container_name=$STORAGE_REPOSITORY
    access_key=$STORAGE_PASSWORD
    path="${ARTIFACT_NAME}-${ARTIFACT_VERSION}.${ARTIFACT_EXTENSION}"
    
