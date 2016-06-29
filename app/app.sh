@@ -1,9 +1,9 @@
 #!/bin/bash 
 
 downloadBlob () {
-   storage_account=$ACCOUNT
+   storage_account=$STORAGE_ACCOUNT
    container_name=$REPOSITORY
-   access_key=$PASSWORD
+   access_key=$STORAGE_PASSWORD
    path="${ARTIFACT_NAME}-${ARTIFACT_VERSION}.${ARTIFACT_EXTENSION}"
    
    blob_store_url="blob.core.windows.net"
@@ -39,7 +39,7 @@ downloadBlob () {
 
 ###############################################################
 
-cd /app
+cd /tmp
 
 IS_ZIP=false
 
@@ -47,23 +47,23 @@ if [ "$ARTIFACT_EXTENSION" = "zip" ]; then
     IS_ZIP=true
 fi
 
-if [ "$STORAGE" = "azure" ]; then
+if [ "$STORAGE_TYPE" = "azure" ]; then
    downloadBlob
 else
    if $IS_ZIP ; then
-     wget --user=$ACCOUNT --password=$PASSWORD ${URL}/service/local/artifact/maven/content?r=${REPOSITORY}"&g"=${ARTIFACT_GROUP}"&a"=${ARTIFACT_NAME}"&v"=${ARTIFACT_VERSION}"&e"=${ARTIFACT_EXTENSION} -O app.zip
+     wget --user=$STORAGE_ACCOUNT --password=$STORAGE_PASSWORD ${URL}/service/local/artifact/maven/content?r=${REPOSITORY}"&g"=${ARTIFACT_GROUP}"&a"=${ARTIFACT_NAME}"&v"=${ARTIFACT_VERSION}"&e"=${ARTIFACT_EXTENSION} -O app.zip
    else
-     wget --user=$ACCOUNT --password=$PASSWORD ${URL}/service/local/artifact/maven/content?r=${REPOSITORY}"&g"=${ARTIFACT_GROUP}"&a"=${ARTIFACT_NAME}"&v"=${ARTIFACT_VERSION} -O app.jar
+     wget --user=$STORAGE_ACCOUNT --password=$STORAGE_PASSWORD ${URL}/service/local/artifact/maven/content?r=${REPOSITORY}"&g"=${ARTIFACT_GROUP}"&a"=${ARTIFACT_NAME}"&v"=${ARTIFACT_VERSION} -O app.jar
    fi
 fi	
 
 if $IS_ZIP ; then
    unzip app.zip
-   cd upp*
+   cd ${ARTIFACT_NAME}-${ARTIFACT_VERSION}
    cd bin
    ./${ARTIFACT_NAME} ${ARGS}
 else
-   java ${JAVA_OPTIONS} -jar app.jar ${ARGS}
+   java ${JAVA_OPTS} -jar app.jar ${ARGS}
 fi
 
 exit
